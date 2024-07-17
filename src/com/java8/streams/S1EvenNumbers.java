@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @author KowlutlaSwamy
  *
  */
-public class J1EvenNumbers {
+public class S1EvenNumbers {
 
 	public static void main(String[] args) {
 		/**
