@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author KowlutlaSwamy
  *
  */
-public class S7FirstNonRepeatedCharacter {
+public class S7FirstRepeatedAndNonRepeatedCharacter {
 
 	public static void main(String[] args) {
 		/**
@@ -33,6 +33,19 @@ public class S7FirstNonRepeatedCharacter {
 					"First Non Repeated character: " + firstNonRepeated.get());
 		} else {
 			System.out.println("All are duplicated characters");
+		}
+
+		Optional<Character> firstRepeated = input.chars()
+				.mapToObj(c -> (char) c)
+				.collect(Collectors.groupingBy(Function.identity(),
+						LinkedHashMap::new, Collectors.counting()))
+				.entrySet().stream().filter(e -> e.getValue() > 1)
+				.map(e -> e.getKey()).findFirst();
+		if (firstRepeated.isPresent()) {
+			System.out.println(
+					"First Repeated character: " + firstRepeated.get());
+		} else {
+			System.out.println("No duplicated characters");
 		}
 	}
 
